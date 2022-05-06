@@ -4,14 +4,17 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:minimal_localizations/minimal_localizations.dart';
 
-final minimalLocalizationsDelegate = MinimalLocalizationsDelegate(
-  {
-    'en': {'title': 'Localizations'},
-    'nb-NO': {'title': 'Lokaliseringer'},
-  },
-);
-
 Widget buildTestWidgetWithLocale(Locale locale) {
+  final minimalLocalizationsDelegate = MinimalLocalizationsDelegate({
+    'en': {
+      'title': 'Localizations',
+      'hello': 'Hello',
+    },
+    'nb-NO': {
+      'title': 'Lokaliseringer',
+      'hello': 'Hei',
+    },
+  });
   return MaterialApp(
     locale: locale,
     localizationsDelegates: [
@@ -22,7 +25,7 @@ Widget buildTestWidgetWithLocale(Locale locale) {
     home: Scaffold(
       body: Builder(
         builder: (context) => Text(
-          MinimalLocalizations.of(context).string('title'),
+          MinimalLocalizations.of(context).string('hello'),
         ),
       ),
     ),
@@ -33,7 +36,7 @@ void main() {
   testWidgets('MyTestApp find [en] text', (WidgetTester tester) async {
     await tester.pumpWidget(buildTestWidgetWithLocale(const Locale('en')));
     await tester.pump();
-    final hiFinder = find.text('Localizations');
+    final hiFinder = find.text('Hello');
     expect(hiFinder, findsOneWidget);
   });
 
@@ -41,14 +44,14 @@ void main() {
     await tester
         .pumpWidget(buildTestWidgetWithLocale(const Locale('nb', 'NO')));
     await tester.pump();
-    final hiFinder = find.text('Lokaliseringer');
+    final hiFinder = find.text('Hei');
     expect(hiFinder, findsOneWidget);
   });
 
   test('Test MinimalLocalizationsDelegate is supported', () {
     final delegate = MinimalLocalizationsDelegate({
-      'en': {'title': 'Minimal Localizations'},
-      'nb-NO': {'title': 'Minimal Lokaliseringer'},
+      'en': {'hello': 'Hello'},
+      'nb-NO': {'hello': 'Hei'},
     });
     expect(delegate.isSupported(const Locale('en')), true);
     expect(delegate.isSupported(const Locale('nb', 'NO')), true);
