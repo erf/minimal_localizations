@@ -33,7 +33,7 @@ dependencies:
 Declare a `MinimalLocalizationsDelegate` variable given a map of translations
 per language tag.
 
-> The language tag must be a valid Unicode BCP47. See [http://www.unicode.org/reports/tr35/](http://www.unicode.org/reports/tr35/) for details.
+> The language tag must be a valid Unicode BCP47. See [https://www.unicode.org/reports/tr35/](https://www.unicode.org/reports/tr35/) for details.
 
 ```Dart
 final minimalLocalizationsDelegate = MinimalLocalizationsDelegate(
