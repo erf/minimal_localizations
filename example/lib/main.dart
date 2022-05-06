@@ -12,12 +12,16 @@ void main() {
   runApp(const MyApp());
 }
 
-final minimalLocalizationsDelegate = MinimalLocalizationsDelegate(
-  {
-    'en': {'title': 'Minimal Localizations'},
-    'nb-NO': {'title': 'Minimal Lokaliseringer'},
+final minimalLocalizationsDelegate = MinimalLocalizationsDelegate({
+  'en': {
+    'title': 'Localizations',
+    'hello': 'Hello',
   },
-);
+  'nb-NO': {
+    'title': 'Lokaliseringer',
+    'hello': 'Hei',
+  },
+});
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -50,7 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text('title'.tr(context)),
       ),
       body: Center(
-        child: Text('title'.tr(context)),
+        child: Text('hello'.tr(context)),
       ),
     );
   }
