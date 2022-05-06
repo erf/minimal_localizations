@@ -1,10 +1,10 @@
 # minimal_localizations
 
-Localize your Flutter app given a map of translations per language.
+Localize your Flutter app given a `Map` of translations per language.
 
 It's based on the [minimal localization example](https://github.com/flutter/website/tree/main/examples/internationalization/minimal), but lets you pass a map of translations in the constructor.
 
-We also added methods to get a `value`, a `string` or a list of `supportedLocales`.
+We've also added methods to get a `value`, a `string` or a list of `supportedLocales`.
 
 ## Usage
 
@@ -19,12 +19,12 @@ dependencies:
   minimal_localizations:
 ```
 
-### Add a map of translations per language to MaterialApp
+### Add translations-per-language Map to MaterialApp
 
 Declare a `MinimalLocalizationsDelegate` variable given a map of translations
 per language tag.
 
-The language tag must be a valid Unicode BCP47. See [http://www.unicode.org/reports/tr35/](http://www.unicode.org/reports/tr35/) for details.
+> The language tag must be a valid Unicode BCP47. See [http://www.unicode.org/reports/tr35/](http://www.unicode.org/reports/tr35/) for details.
 
 ```Dart
 final minimalLocalizationsDelegate = MinimalLocalizationsDelegate(
