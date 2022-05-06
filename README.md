@@ -36,12 +36,16 @@ per language tag.
 > The language tag must be a valid Unicode BCP47. See [https://www.unicode.org/reports/tr35/](https://www.unicode.org/reports/tr35/) for details.
 
 ```Dart
-final minimalLocalizationsDelegate = MinimalLocalizationsDelegate(
-  {
-    'en': {'title': 'Localizations'},
-    'nb-NO': {'title': 'Lokaliseringer'},
+final minimalLocalizationsDelegate = MinimalLocalizationsDelegate({
+  'en': {
+    'title': 'Localizations',
+    'hello': 'Hello',
   },
-);
+  'nb-NO': {
+    'title': 'Lokaliseringer',
+    'hello': 'Hei',
+  },
+});
 ```
 
 Add it to `MaterialApp` and call `supportedLocales`.
