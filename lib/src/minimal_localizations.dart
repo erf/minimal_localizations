@@ -5,7 +5,7 @@ import 'package:flutter/foundation.dart' show SynchronousFuture;
 
 /// A minimal localization class.
 class MinimalLocalizations {
-  final Map<String, Map<String, String>> localizedValues;
+  final Map<String, Map<String, dynamic>> localizedValues;
 
   late String _langTag;
 
@@ -20,7 +20,9 @@ class MinimalLocalizations {
 
   List<String> languages() => localizedValues.keys.toList();
 
-  String string(String key) => localizedValues[_langTag]![key]!;
+  dynamic value(String key) => localizedValues[_langTag]![key]!;
+
+  String string(String key) => value(key);
 }
 
 /// A minimal localization delegate.

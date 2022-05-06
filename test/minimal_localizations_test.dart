@@ -5,7 +5,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:minimal_localizations/minimal_localizations.dart';
 
 void main() {
-  test('Test MinimalLocalizationsDelegate', () {
+  test('Test MinimalLocalizationsDelegate is supported', () {
     final delegate = MinimalLocalizationsDelegate({
       'en': {'title': 'Minimal Localizations'},
     });
