@@ -8,8 +8,10 @@ void main() {
   test('Test MinimalLocalizationsDelegate is supported', () {
     final delegate = MinimalLocalizationsDelegate({
       'en': {'title': 'Minimal Localizations'},
+      'nb-NO': {'title': 'Minimal Lokaliseringer'},
     });
     expect(delegate.isSupported(const Locale('en')), true);
+    expect(delegate.isSupported(const Locale('nb', 'NO')), true);
     expect(delegate.isSupported(const Locale('nb')), false);
   });
 }
