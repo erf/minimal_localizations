@@ -29,10 +29,7 @@ class MyApp extends StatelessWidget {
         ...GlobalMaterialLocalizations.delegates,
         minimalLocalizationsDelegate,
       ],
-      supportedLocales: const [
-        Locale('en'),
-        Locale('nb', 'NO'),
-      ],
+      supportedLocales: minimalLocalizationsDelegate.supportedLocales(),
       home: const MyHomePage(),
     );
   }

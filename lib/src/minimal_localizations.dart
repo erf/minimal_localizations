@@ -20,10 +20,20 @@ class MinimalLocalizations {
   void setLocale(Locale locale) => _langTag = locale.toLanguageTag();
 
   /// Get the supported locales.
-  List<String> supportedLocales() => localizedValues.keys.toList();
+  List<String> languageTags() => localizedValues.keys.toList();
 
+  /// Get a list of supported locales.
+  List<Locale> supportedLocales() {
+    return languageTags().map((tag) {
+      final codes = tag.split('-');
+      return Locale(codes[0], codes.length > 1 ? codes[1] : null);
+    }).toList();
+  }
+
+  /// Get a localized value for the given key.
   dynamic value(String key) => localizedValues[_langTag]![key]!;
 
+  /// Get a localized string for the given key.
   String string(String key) => value(key);
 }
 
@@ -37,7 +47,10 @@ class MinimalLocalizationsDelegate
 
   @override
   bool isSupported(Locale locale) =>
-      minimalLocalizations.supportedLocales().contains(locale.toLanguageTag());
+      minimalLocalizations.languageTags().contains(locale.toLanguageTag());
+
+  /// Get a list of the supported locales.
+  List<Locale> supportedLocales() => minimalLocalizations.supportedLocales();
 
   @override
   Future<MinimalLocalizations> load(Locale locale) {
