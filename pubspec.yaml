@@ -1,7 +1,7 @@
 name: minimal_localizations
 description: Minimal localization given a map of translations per language.
-version: 0.0.1
-homepage: https://apptakk.com
+version: 0.1.0
+homepage: https://github.com/erf/minimal_localizations
 
 environment:
   sdk: ">=2.16.2 <3.0.0"
