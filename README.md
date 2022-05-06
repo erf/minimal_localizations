@@ -1,39 +1,84 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# minimal_localizations
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages). 
+Localize your Flutter app given a map of translations per language.
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages). 
--->
+It's based on the [minimal localization example](https://github.com/flutter/website/tree/main/examples/internationalization/minimal), but lets you pass a map of translations in the constructor.
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
-
-## Features
-
-TODO: List what your package can do. Maybe include images, gifs, or videos.
-
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+We also added methods to get a `value`, a `string` or a list of `supportedLocales`.
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
+See [example](example).
 
-```dart
-const like = 'sample';
+### Install
+
+Add to your `pubspec.yaml`
+
+```yaml
+dependencies:
+  minimal_localizations:
 ```
 
-## Additional information
+### Add a map of translations per language to MaterialApp
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+Declare a `MinimalLocalizationsDelegate` variable given a map of translations
+per language tag:
+
+```Dart
+final minimalLocalizationsDelegate = MinimalLocalizationsDelegate(
+  {
+    'en': {'title': 'Localizations'},
+    'nb-NO': {'title': 'Lokaliseringer'},
+  },
+);
+```
+
+Add it to `MaterialApp` and call `supportedLocales`.
+
+```Dart
+MaterialApp(
+  localizationsDelegates: [
+    ...GlobalMaterialLocalizations.delegates,
+    minimalLocalizationsDelegate,
+  ],
+  supportedLocales: minimalLocalizationsDelegate.supportedLocales(),
+}
+```
+
+### API
+
+Translate dynamic values using
+
+```Dart
+MinimalLocalizations.of(context).value('some_value')
+```
+
+Translate strings using
+
+```Dart
+MinimalLocalizations.of(context).string('Hi')
+```
+
+We keep the API simple, but you can easily add an extension method to `String`
+like this:
+
+```Dart
+extension LocalizedString on String {
+  String tr(BuildContext context) => MinimalLocalizations.of(context).string(this);
+}
+```
+
+### Note on **iOS**
+
+Add supported languages to `ios/Runner/Info.plist` as described
+[here](https://flutter.dev/docs/development/accessibility-and-localization/internationalization#specifying-supportedlocales).
+
+Example:
+
+```
+<key>CFBundleLocalizations</key>
+<array>
+	<string>en</string>
+	<string>nb-NO</string>
+</array>
+```
