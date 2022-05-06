@@ -1,6 +1,6 @@
 name: minimal_localizations
 description: Minimal localization given a map of translations per language.
-version: 0.1.0+3
+version: 0.1.0+4
 homepage: https://github.com/erf/minimal_localizations
 
 environment:
