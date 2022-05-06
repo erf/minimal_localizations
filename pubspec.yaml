@@ -1,7 +1,7 @@
 name: minimal_localizations
 description: A new Flutter package project.
 version: 0.0.1
-homepage:
+homepage: https://apptakk.com
 
 environment:
   sdk: ">=2.16.2 <3.0.0"
@@ -14,7 +14,9 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^1.0.0
+  flutter_lints: ^1.0.4
+  flutter_localizations:
+    sdk: flutter
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
