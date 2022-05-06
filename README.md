@@ -6,6 +6,15 @@ It's based on the [minimal localization example](https://github.com/flutter/webs
 
 We've also added methods to get a `value`, a `string` or a list of `supportedLocales`.
 
+## Features
+
+- Great for smaller projects to get started with localization
+- Simple to use (no code gen)
+- Just code (no assets)
+- Supports both String and dynamic type
+- Create supportedLocales automatically
+- No dependencies
+
 ## Usage
 
 See [example](example).
