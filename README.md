@@ -8,30 +8,28 @@ We've also added methods to get a `value`, a `string` or a list of `supportedLoc
 
 ## Features
 
-- Great for smaller projects to get started with localization
-- Simple to use (no code gen)
-- Just code (no assets)
-- Supports both String and dynamic type
-- Create supportedLocales automatically
-- No dependencies
+- Ideal for small projects
+- Easy to use without code generation
+- No need for assets, just pure code
+- Fast performance without asset parsing
+- Supports both String and dynamic types
+- Automatically generates supported locales
+- No external dependencies
 
-## Usage
+## Install
 
-See [example](example).
-
-### Install
-
-Add to your `pubspec.yaml`
+Add `minimal_localizations` and `flutter_localizations` as dependencies to your `pubspec.yaml`.
 
 ```yaml
 dependencies:
+  flutter_localizations:
+    sdk: flutter
   minimal_localizations:
 ```
 
 ### Add translations-per-language Map to MaterialApp
 
-Declare a `MinimalLocalizationsDelegate` variable given a map of translations
-per language tag.
+Declare a `MinimalLocalizationsDelegate` variable given a map of translations per language tag.
 
 > The language tag must be a valid Unicode BCP47. See [https://www.unicode.org/reports/tr35/](https://www.unicode.org/reports/tr35/) for details.
 
@@ -60,29 +58,6 @@ MaterialApp(
 }
 ```
 
-### API
-
-Translate dynamic values using
-
-```Dart
-MinimalLocalizations.of(context).value('some_value')
-```
-
-Translate strings using
-
-```Dart
-MinimalLocalizations.of(context).string('Hi')
-```
-
-We keep the API simple, but you can easily add an extension method to `String`
-like this:
-
-```Dart
-extension LocalizedString on String {
-  String tr(BuildContext context) => MinimalLocalizations.of(context).string(this);
-}
-```
-
 ### Note on **iOS**
 
 Add supported languages to `ios/Runner/Info.plist` as described
@@ -97,3 +72,35 @@ Example:
 	<string>nb-NO</string>
 </array>
 ```
+
+### API
+
+Translate dynamic values using
+
+```Dart
+MinimalLocalizations.of(context).value('some_value')
+```
+
+Translate strings using
+
+```Dart
+MinimalLocalizations.of(context).string('Hi')
+```
+
+We keep the API simple, but you can easily add an extension method to `String` like this:
+
+```Dart
+extension LocalizedString on String {
+  String tr(BuildContext context) => MinimalLocalizations.of(context).string(this);
+}
+```
+
+So you can translate strings like this:
+
+```Dart
+'Hi'.tr(context)
+```
+
+## Example
+
+See [example](example)
