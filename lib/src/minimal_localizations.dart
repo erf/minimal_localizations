@@ -23,12 +23,10 @@ class MinimalLocalizations {
   Iterable<String> get languageTags => localizedValues.keys;
 
   /// Get a list of supported locales.
-  Iterable<Locale> get supportedLocales {
-    return languageTags.map((tag) {
-      List<String> codes = tag.split('-');
-      return Locale(codes[0], codes.length > 1 ? codes[1] : null);
-    });
-  }
+  Iterable<Locale> get supportedLocales => languageTags.map((tag) {
+        List<String> codes = tag.split('-');
+        return Locale(codes[0], codes.length > 1 ? codes[1] : null);
+      });
 
   /// Get a localized value for the given key.
   dynamic value(String key) => localizedValues[_langTag]![key]!;
