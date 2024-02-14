@@ -15,11 +15,11 @@ void main() {
 final minimalLocalizationsDelegate = MinimalLocalizationsDelegate({
   'en': {
     'title': 'Localizations',
-    'hello': 'Hello',
+    'hi': 'Hi !',
   },
   'nb-NO': {
     'title': 'Lokaliseringer',
-    'hello': 'Hei',
+    'hi': 'Hei !',
   },
 });
 
@@ -54,7 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text('title'.tr(context)),
       ),
       body: Center(
-        child: Text('hello'.tr(context)),
+        child: Text('hi'.tr(context)),
       ),
     );
   }
