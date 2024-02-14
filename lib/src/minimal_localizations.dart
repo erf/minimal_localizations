@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart' show SynchronousFuture;
 
+import 'locale_ext.dart';
+
 /// A minimal localization class.
 class MinimalLocalizations {
   final Map<String, Map<String, dynamic>> localizedValues;
@@ -11,10 +13,8 @@ class MinimalLocalizations {
 
   MinimalLocalizations(this.localizedValues);
 
-  static MinimalLocalizations of(BuildContext context) {
-    return Localizations.of<MinimalLocalizations>(
-        context, MinimalLocalizations)!;
-  }
+  static MinimalLocalizations of(BuildContext context) =>
+      Localizations.of<MinimalLocalizations>(context, MinimalLocalizations)!;
 
   /// Given a locale, set the current language tag.
   void setLocale(Locale locale) => _langTag = locale.toLanguageTag();
@@ -23,10 +23,8 @@ class MinimalLocalizations {
   Iterable<String> get languageTags => localizedValues.keys;
 
   /// Get a list of supported locales.
-  Iterable<Locale> get supportedLocales => languageTags.map((tag) {
-        List<String> codes = tag.split('-');
-        return Locale(codes[0], codes.length > 1 ? codes[1] : null);
-      });
+  Iterable<Locale> get supportedLocales =>
+      languageTags.map((tag) => LocaleExt.fromLanguageTag(tag));
 
   /// Get a localized value for the given key.
   dynamic value(String key) => localizedValues[_langTag]![key]!;
